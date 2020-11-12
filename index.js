@@ -739,67 +739,67 @@ bot.on("message", function (message) {
 
 
 
-    // //-----------------------------------------Calculatrice--------------------------------------------------//
-    // if (message.content.startsWith("!c")){
-    //     let args = message.content.split(' ');
-    //     args.shift();
-    //
-    //     if (!args[0]) return message.channel.send("Erreur dans l'écriture du calcul !");
-    //
-    //     let resp;
-    //     try {
-    //         resp = math.evaluate(args[0]);
-    //     }catch (e){
-    //         console.log(resp);
-    //         return message.channel.send("Erreur dans l'écriture du calcul");
-    //     }
-    //
-    //     const embed = new Discord.MessageEmbed()
-    //         .setColor(0xfffff)
-    //         .setTitle('Calculatrice')
-    //         .addField('Calcul', `\`\`\`js\n${args[0]}\`\`\``)
-    //         .addField('Résultat', `\`\`\`js\n${resp}\`\`\``)
-    //
-    //     message.channel.send(embed);
-    // }
-    // //-------------------------------------------------------------------------------------------------//
+    //-----------------------------------------Calculatrice--------------------------------------------------//
+    if (message.content.startsWith("!c")){
+        let args = message.content.split(' ');
+        args.shift();
+
+        if (!args[0]) return message.channel.send("Erreur dans l'écriture du calcul !");
+
+        let resp;
+        try {
+            resp = math.evaluate(args[0]);
+        }catch (e){
+            console.log(resp);
+            return message.channel.send("Erreur dans l'écriture du calcul");
+        }
+
+        const embed = new Discord.MessageEmbed()
+            .setColor(0xfffff)
+            .setTitle('Calculatrice')
+            .addField('Calcul', `\`\`\`js\n${args[0]}\`\`\``)
+            .addField('Résultat', `\`\`\`js\n${resp}\`\`\``)
+
+        message.channel.send(embed);
+    }
+    //-------------------------------------------------------------------------------------------------//
 
 
 
-//     //-----------------------------------------Bon--------------------------------------------------//
-//     if (message.content.startsWith("!bon")){
-//         if (!message.member.roles.cache.has('762065203042713670')){
-//             return ;
-//         }
-//         let discord_id;
-//         let args = message.content.split(' ');
-//         args.shift();
-//
-//         if (message.mentions.users.size !== 0){
-//             discord_id = message.mentions.users.first().id;
-//         }
-//
-//         message.channel.send("<@" + discord_id + "> sera ban dans 5 secondes, pour annuler le ban tapez !cancel");
-//         let cpt = 5;
-//         let time = 0;
-//         for (let i=0; i<5; i++) {
-//             task(i);
-//             console.log(cpt);
-//
-//         }
-//
-//         function task(i) {
-//             setTimeout(function() {
-//                 time = i + cpt;
-//                 message.channel.send(time);
-//                 cpt -= 2;
-//                 if (cpt === -5){
-//                     message.channel.send("Nan j'dec");
-//                 }
-//             }, 2000 * i);
-//         }
-//     }
-// //-------------------------------------------------------------------------------------------------//
+    //-----------------------------------------Bon--------------------------------------------------//
+    if (message.content.startsWith("!bon")){
+        if (!message.member.roles.cache.has('762065203042713670')){
+            return ;
+        }
+        let discord_id;
+        let args = message.content.split(' ');
+        args.shift();
+
+        if (message.mentions.users.size !== 0){
+            discord_id = message.mentions.users.first().id;
+        }
+
+        message.channel.send("<@" + discord_id + "> sera ban dans 5 secondes, pour annuler le ban tapez !cancel");
+        let cpt = 5;
+        let time = 0;
+        for (let i=0; i<5; i++) {
+            task(i);
+            console.log(cpt);
+
+        }
+
+        function task(i) {
+            setTimeout(function() {
+                time = i + cpt;
+                message.channel.send(time);
+                cpt -= 2;
+                if (cpt === -5){
+                    message.channel.send("Nan j'dec");
+                }
+            }, 2000 * i);
+        }
+    }
+//-------------------------------------------------------------------------------------------------//
 
 
     //-------------------------------------------Points---------------------------------------------------//
