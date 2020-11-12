@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const math = require('mathjs');
+//const math = require('mathjs');
 const bot = new Discord.Client;
 const db = require('./db')
 
@@ -662,144 +662,144 @@ bot.on("message", function (message) {
 //----------------------------------------------------------------------------------------------------//
 
 
-    //-----------------------------------------Random--------------------------------------------------//
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max) + 1);
-    }
-    //-------------------------------------------------------------------------------------------//
-
-
-    //-----------------------------------------Dice--------------------------------------------------//
-    if (message.content.startsWith("!r")){
-        let args = message.content.split(' ');
-        args.shift();
-        let str = args[0];
-        let cpt = 0;
-        let answer = "";
-        let finalAnswer = "";
-        let value = 0;
-
-        const calc = str.split("+")
-        let chars;
-
-
-        //let nb_dice = chars[0];
-        //let size_dice = chars[1];
-        let nb_dice;
-        let size_dice;
-
-        for (let i = 0; i < calc.length; i++) {
-            chars = calc[i].split('d');
-            if (chars.length < 2){
-                message.reply("Enculé tapes la bonne commande !");
-                return;
-            }
-            nb_dice = chars[0]
-            size_dice = chars[1];
-            if(nb_dice === "") nb_dice = 1;
-            if (size_dice === "")  size_dice = 1;
-            console.log(nb_dice + " " + size_dice);
-
-            answer += "(";
-            for (let i = 1; i <= nb_dice; i++) {
-                value = getRandomInt(size_dice);
-                answer += value + " + ";
-                cpt += value;
-            }
-            answer = answer.substring(0, answer.length - 3);
-            answer += ") + ";
-        }
-
-        if (calc.length > 1 || nb_dice > 1){
-            finalAnswer = answer.substring(0, answer.length - 3);
-            finalAnswer += " = " + cpt;
-        }
-        else finalAnswer = answer.substring(1, answer.length - 4);
-
-        if (finalAnswer.length > 1024 && finalAnswer.length < 1940){
-            message.channel.send("Ca faisait beaucoup donc je te le mets en dur\nRésultat = " + finalAnswer);
-        }
-        else if (finalAnswer.length > 2000) {
-            message.channel.send("Ca faisait beaucoup donc je te le mets en dur\nRésultat = " + cpt);
-        }
-        else {
-            const embed = new Discord.MessageEmbed()
-                .setColor(0xfffff)
-                .setTitle('Lancer de dé')
-                .addField('Lancé', `\`\`\`js\n${args[0]}\`\`\``)
-                .addField('Résultat', `\`\`\`js\n${finalAnswer}\`\`\``)
-
-            message.channel.send(embed);
-        }
-
-
-
-    }
-//-------------------------------------------------------------------------------------------------//
-
-
-
-    //-----------------------------------------Calculatrice--------------------------------------------------//
-    if (message.content.startsWith("!c")){
-        let args = message.content.split(' ');
-        args.shift();
-
-        if (!args[0]) return message.channel.send("Erreur dans l'écriture du calcul !");
-
-        let resp;
-        try {
-            resp = math.evaluate(args[0]);
-        }catch (e){
-            console.log(resp);
-            return message.channel.send("Erreur dans l'écriture du calcul");
-        }
-
-        const embed = new Discord.MessageEmbed()
-            .setColor(0xfffff)
-            .setTitle('Calculatrice')
-            .addField('Calcul', `\`\`\`js\n${args[0]}\`\`\``)
-            .addField('Résultat', `\`\`\`js\n${resp}\`\`\``)
-
-        message.channel.send(embed);
-    }
-    //-------------------------------------------------------------------------------------------------//
+//     //-----------------------------------------Random--------------------------------------------------//
+//     function getRandomInt(max) {
+//         return Math.floor(Math.random() * Math.floor(max) + 1);
+//     }
+//     //-------------------------------------------------------------------------------------------//
+//
+//
+//     //-----------------------------------------Dice--------------------------------------------------//
+//     if (message.content.startsWith("!r")){
+//         let args = message.content.split(' ');
+//         args.shift();
+//         let str = args[0];
+//         let cpt = 0;
+//         let answer = "";
+//         let finalAnswer = "";
+//         let value = 0;
+//
+//         const calc = str.split("+")
+//         let chars;
+//
+//
+//         //let nb_dice = chars[0];
+//         //let size_dice = chars[1];
+//         let nb_dice;
+//         let size_dice;
+//
+//         for (let i = 0; i < calc.length; i++) {
+//             chars = calc[i].split('d');
+//             if (chars.length < 2){
+//                 message.reply("Enculé tapes la bonne commande !");
+//                 return;
+//             }
+//             nb_dice = chars[0]
+//             size_dice = chars[1];
+//             if(nb_dice === "") nb_dice = 1;
+//             if (size_dice === "")  size_dice = 1;
+//             console.log(nb_dice + " " + size_dice);
+//
+//             answer += "(";
+//             for (let i = 1; i <= nb_dice; i++) {
+//                 value = getRandomInt(size_dice);
+//                 answer += value + " + ";
+//                 cpt += value;
+//             }
+//             answer = answer.substring(0, answer.length - 3);
+//             answer += ") + ";
+//         }
+//
+//         if (calc.length > 1 || nb_dice > 1){
+//             finalAnswer = answer.substring(0, answer.length - 3);
+//             finalAnswer += " = " + cpt;
+//         }
+//         else finalAnswer = answer.substring(1, answer.length - 4);
+//
+//         if (finalAnswer.length > 1024 && finalAnswer.length < 1940){
+//             message.channel.send("Ca faisait beaucoup donc je te le mets en dur\nRésultat = " + finalAnswer);
+//         }
+//         else if (finalAnswer.length > 2000) {
+//             message.channel.send("Ca faisait beaucoup donc je te le mets en dur\nRésultat = " + cpt);
+//         }
+//         else {
+//             const embed = new Discord.MessageEmbed()
+//                 .setColor(0xfffff)
+//                 .setTitle('Lancer de dé')
+//                 .addField('Lancé', `\`\`\`js\n${args[0]}\`\`\``)
+//                 .addField('Résultat', `\`\`\`js\n${finalAnswer}\`\`\``)
+//
+//             message.channel.send(embed);
+//         }
+//
+//
+//
+//     }
+// //-------------------------------------------------------------------------------------------------//
 
 
 
-    //-----------------------------------------Bon--------------------------------------------------//
-    if (message.content.startsWith("!bon")){
-        if (!message.member.roles.cache.has('762065203042713670')){
-            return ;
-        }
-        let discord_id;
-        let args = message.content.split(' ');
-        args.shift();
+    // //-----------------------------------------Calculatrice--------------------------------------------------//
+    // if (message.content.startsWith("!c")){
+    //     let args = message.content.split(' ');
+    //     args.shift();
+    //
+    //     if (!args[0]) return message.channel.send("Erreur dans l'écriture du calcul !");
+    //
+    //     let resp;
+    //     try {
+    //         resp = math.evaluate(args[0]);
+    //     }catch (e){
+    //         console.log(resp);
+    //         return message.channel.send("Erreur dans l'écriture du calcul");
+    //     }
+    //
+    //     const embed = new Discord.MessageEmbed()
+    //         .setColor(0xfffff)
+    //         .setTitle('Calculatrice')
+    //         .addField('Calcul', `\`\`\`js\n${args[0]}\`\`\``)
+    //         .addField('Résultat', `\`\`\`js\n${resp}\`\`\``)
+    //
+    //     message.channel.send(embed);
+    // }
+    // //-------------------------------------------------------------------------------------------------//
 
-        if (message.mentions.users.size !== 0){
-            discord_id = message.mentions.users.first().id;
-        }
 
-        message.channel.send("<@" + discord_id + "> sera ban dans 5 secondes, pour annuler le ban tapez !cancel");
-        let cpt = 5;
-        let time = 0;
-        for (let i=0; i<5; i++) {
-            task(i);
-            console.log(cpt);
 
-        }
-
-        function task(i) {
-            setTimeout(function() {
-                time = i + cpt;
-                message.channel.send(time);
-                cpt -= 2;
-                if (cpt === -5){
-                    message.channel.send("Nan j'dec");
-                }
-            }, 2000 * i);
-        }
-    }
-//-------------------------------------------------------------------------------------------------//
+//     //-----------------------------------------Bon--------------------------------------------------//
+//     if (message.content.startsWith("!bon")){
+//         if (!message.member.roles.cache.has('762065203042713670')){
+//             return ;
+//         }
+//         let discord_id;
+//         let args = message.content.split(' ');
+//         args.shift();
+//
+//         if (message.mentions.users.size !== 0){
+//             discord_id = message.mentions.users.first().id;
+//         }
+//
+//         message.channel.send("<@" + discord_id + "> sera ban dans 5 secondes, pour annuler le ban tapez !cancel");
+//         let cpt = 5;
+//         let time = 0;
+//         for (let i=0; i<5; i++) {
+//             task(i);
+//             console.log(cpt);
+//
+//         }
+//
+//         function task(i) {
+//             setTimeout(function() {
+//                 time = i + cpt;
+//                 message.channel.send(time);
+//                 cpt -= 2;
+//                 if (cpt === -5){
+//                     message.channel.send("Nan j'dec");
+//                 }
+//             }, 2000 * i);
+//         }
+//     }
+// //-------------------------------------------------------------------------------------------------//
 
 
     //-------------------------------------------Points---------------------------------------------------//
