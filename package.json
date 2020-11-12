@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "discord.js": "^12.4.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "mathjs": "^8.0.1"
   },
   "devDependencies": {
     "mathjs": "^8.0.1"
