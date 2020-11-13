@@ -670,7 +670,7 @@ bot.on("message", function (message) {
 
 
     //-----------------------------------------Dice--------------------------------------------------//
-    if (message.content.startsWith("!r")){
+    if (message.content.startsWith("!r ")){
         let args = message.content.split(' ');
         args.shift();
         let str = args[0];
