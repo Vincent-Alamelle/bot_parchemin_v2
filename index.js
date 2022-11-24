@@ -3,7 +3,7 @@ const math = require('mathjs');
 const bot = new Discord.Client;
 const db = require('./db')
 
-bot.login('NzY4NzM3MTAxMjMwMzc0OTMy.X5E0Nw.wjztx6_wEZe72F-CF00v-F_WTPw');
+bot.login('TOKEN');
 
 //Connection to the server's db
 let con = db.dbConnection();
